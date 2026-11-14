@@ -40,6 +40,13 @@ import {
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+function getAuthHeaders(extraHeaders: Record<string, string> = {}): Record<string, string> {
+  const token = typeof window !== "undefined" ? localStorage.getItem("gareith_token") : null;
+  return token
+    ? { ...extraHeaders, Authorization: `Bearer ${token}` }
+    : extraHeaders;
+}
+
 const BACKEND_MODELS: AIModel[] = [
   {
     id: "gemini-2.5-flash",
@@ -435,6 +442,14 @@ export default function ChatPage() {
   useEffect(() => {
     // Trigger initial smooth shuttle animation on mount
     triggerShuttleReload(false);
+
+    // Capture JWT token from Google OAuth redirect (?token=...)
+    const params = new URLSearchParams(window.location.search);
+    const urlToken = params.get("token");
+    if (urlToken) {
+      localStorage.setItem("gareith_token", urlToken);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
 
     let savedThread = localStorage.getItem("thread_id");
     if (!savedThread) {
