@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
 fastapi
 uvicorn[standard]
 python-dotenv
@@ -15,12 +17,13 @@ certifi
 langchain
 langchain-core
 langchain-community
+langchain-text-splitters
 langchain-groq
 langchain-google-genai
 langchain-openai
 langchain-anthropic
 langchain-tavily
- langchain-chroma
+langchain-chroma
 langchain-huggingface
 sentence-transformers
 langgraph
@@ -28,6 +31,7 @@ langgraph-checkpoint-sqlite
 chromadb
 pypdf
 python-docx
+docx2txt
 youtube-transcript-api
 trafilatura
 yfinance
