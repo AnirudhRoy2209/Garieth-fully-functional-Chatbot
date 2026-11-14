@@ -10,7 +10,7 @@ const clashGrotesk = localFont({
 });
 
 const arrayFont = localFont({
-  src: "./fonts/Array-bold.woff2", 
+  src: "./fonts/Array-Bold.woff2", 
   variable: "--font-array",
   display: "swap",
 });
