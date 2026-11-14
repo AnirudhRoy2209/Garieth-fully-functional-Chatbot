@@ -1,0 +1,32 @@
+# 1. Secret Environment Variables (NEVER push these!)
+.env
+.env.*
+frontend/.env*
+
+# 2. Python Virtual Environments & Cache
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 3. Local Databases, RAG Uploads & Exports
+data/
+uploads/
+exports/
+chroma_db/
+*.db
+*.sqlite
+*.sqlite3
+
+# 4. Next.js / Node (Backup rules just in case)
+frontend/node_modules/
+frontend/.next/
+node_modules/
+
+# 5. OS & Editor Junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

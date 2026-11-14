@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-clash), sans-serif;
+  --font-array: var(--font-array), monospace;
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-clash), sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root,
+.dark {
+  /* Fontshare Cream (#FFFCE1) & Pitch Black (#0E0E0E) Palette */
+  --background: #0e0e0e;
+  --foreground: #fffce1;
+  --card: #141413;
+  --card-foreground: #fffce1;
+  --popover: #141413;
+  --popover-foreground: #fffce1;
+  --primary: #fffce1;
+  --primary-foreground: #0e0e0e;
+  --secondary: #1c1c1a;
+  --secondary-foreground: #fffce1;
+  --muted: #1c1c1a;
+  --muted-foreground: #a8a590;
+  --accent: #1f1f1c;
+  --accent-foreground: #fffce1;
+  --destructive: #ef4444;
+  --border: rgba(255, 252, 225, 0.12);
+  --input: rgba(255, 252, 225, 0.15);
+  --ring: rgba(255, 252, 225, 0.4);
+  --radius: 0.625rem;
+  --sidebar: #111110;
+  --sidebar-foreground: #fffce1;
+  --sidebar-primary: #fffce1;
+  --sidebar-primary-foreground: #0e0e0e;
+  --sidebar-accent: #1c1c1a;
+  --sidebar-accent-foreground: #fffce1;
+  --sidebar-border: rgba(255, 252, 225, 0.1);
+  --sidebar-ring: rgba(255, 252, 225, 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Custom sleek cream scrollbar for Sidebar & Chat */
+.smooth-scroll-area {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 252, 225, 0.15) transparent;
+}
+.smooth-scroll-area::-webkit-scrollbar {
+  width: 5px;
+}
+.smooth-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.smooth-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 252, 225, 0.15);
+  border-radius: 9999px;
+}
+.smooth-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 252, 225, 0.3);
+}
