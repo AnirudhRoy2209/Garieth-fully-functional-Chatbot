@@ -499,7 +499,10 @@ export default function ChatPage() {
 
   async function checkUserSession(activeThread: string) {
     try {
-      const res = await fetch(`${API_BASE}/auth/me`, { credentials: "include" });
+      const res = await fetch(`${API_BASE}/auth/me`, {
+        headers: getAuthHeaders(),
+        credentials: "include",
+      });
       if (res.ok) {
         const userData = await res.json();
         setUser(userData);
@@ -511,7 +514,10 @@ export default function ChatPage() {
 
   async function loadConversations() {
     try {
-      const res = await fetch(`${API_BASE}/conversations`, { credentials: "include" });
+      const res = await fetch(`${API_BASE}/conversations`, {
+        headers: getAuthHeaders(),
+        credentials: "include",
+      });
       if (res.ok) {
         const data = await res.json();
         setConversations(data.conversations || []);
@@ -524,6 +530,7 @@ export default function ChatPage() {
     localStorage.setItem("thread_id", targetThreadId);
     try {
       const res = await fetch(`${API_BASE}/history/${targetThreadId}`, {
+        headers: getAuthHeaders(),
         credentials: "include",
       });
       if (res.ok) {
@@ -548,7 +555,7 @@ export default function ChatPage() {
 
     const res = await fetch(`${API_BASE}/conversations/${targetThreadId}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders({ "Content-Type": "application/json" }),
       credentials: "include",
       body: JSON.stringify({ title: newTitle.trim() }),
     });
@@ -561,6 +568,7 @@ export default function ChatPage() {
     e.stopPropagation();
     const res = await fetch(`${API_BASE}/conversations/${targetThreadId}`, {
       method: "DELETE",
+      headers: getAuthHeaders(),
       credentials: "include",
     });
     if (res.ok) {
@@ -642,6 +650,7 @@ export default function ChatPage() {
       try {
         const upRes = await fetch(`${API_BASE}/upload`, {
           method: "POST",
+          headers: getAuthHeaders(),
           credentials: "include",
           body: formData,
         });
@@ -675,7 +684,7 @@ export default function ChatPage() {
       try {
         const response = await fetch(`${API_BASE}/chat/stream`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: getAuthHeaders({ "Content-Type": "application/json" }),
           credentials: "include",
           body: JSON.stringify({
             message: finalPrompt,
