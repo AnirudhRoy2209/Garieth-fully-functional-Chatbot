@@ -51,16 +51,16 @@ app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY", "super-
 
 app.include_router(auth_router)
 
-templates=Jinja2Templates(directory="template")
+
 
 Path("uploads").mkdir(exist_ok=True)
 Path("data").mkdir(exist_ok=True)
 
 init_db()
 
-@app.get("/")
-async def home(request:Request):
-    return templates.TemplateResponse(request=request, name="index.html", context={})
+@app.api_route("/", methods=["GET", "HEAD"])
+async def home():
+    return {"status": "online", "service": "Gareith Agentic AI Backend"}
 
 
 @app.get("/conversations")
