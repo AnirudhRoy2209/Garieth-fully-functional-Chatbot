@@ -108,7 +108,6 @@ def recall_memory(query:str):
     return search_memory(user_id=CURRENT_USER_ID, query=query)
 
 @tool
-@tool
 def get_youtube_transcript(url: str) -> str:
     """Fetch the transcript or details of a YouTube video from its URL to summarize or answer questions."""
     import httpx
